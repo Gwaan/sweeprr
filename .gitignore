@@ -283,4 +283,4 @@ fabric.properties
 .idea/**/azureSettings.xml
 
 # Test
-test/confs
+test/confs/**/*
