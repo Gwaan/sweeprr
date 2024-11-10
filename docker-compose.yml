@@ -1,7 +1,13 @@
 services:
   backend:
     build:
-      context: ./
+      context: ./backend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
