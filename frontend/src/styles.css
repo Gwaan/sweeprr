@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+  display: grid;
+}
+
+:root {
+  --color-background:#ebf2f4;
+  --color-text: #101b1e;
+  --color-primary: #2b4d54;
+  --color-secondary: #b28dc4;
+  --color-accent: #914b86;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #0b1214;
+    --color-text: #e1ecef;
+    --color-primary: #abcdd4;
+    --color-secondary: #603b72;
+    --color-accent: #b46eaa;
+  }
+}
+
+@font-face {
+font-family: 'Inter';
+  src: url('assets/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body {
+  font-family: 'Inter';
+}
