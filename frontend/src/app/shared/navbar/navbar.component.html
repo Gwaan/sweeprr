@@ -1,14 +1,11 @@
-<nav class="sidebar">
+<nav #sidebar class="sidebar close">
   <header>
-    <div class="image-text">
+    <div class="image-container">
       <span class="image">
-        <img src="img/logo.png" alt="logo">
+        <img src="img/logo.webp" alt="logo">
       </span>
-      <div class="text header-text">
-        <span class="name">Sweeprr</span>
-      </div>
     </div>
-    <i class='bx bx-chevron-right toggle'></i>
+    <i class='bx bx-chevron-right toggle' (click)="onToggleSidebar()"></i>
   </header>
   <div class="menu-bar">
     <div class="menu">
@@ -51,9 +48,9 @@
           <i class='bx bx-moon icon moon' ></i>
           <i class='bx bx-sun icon sun' ></i>
         </div>
-        <span class="mode-text">Dark Mode</span>
+        <span #modeText class="mode-text text">Dark Mode</span>
 
-        <div class="toggle-switch" (click)="onToggle()">
+        <div class="toggle-switch" (click)="onToggleMode()">
           <span class="switch"></span>
         </div>
       </li>

@@ -1,4 +1,4 @@
-import {Component, ElementRef, viewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, OnInit, viewChild, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +8,28 @@ import {Component, ElementRef, viewChild, ViewEncapsulation} from '@angular/core
   styleUrl: './navbar.component.css',
   encapsulation: ViewEncapsulation.None
 })
-export class NavbarComponent {
-  body: HTMLElement = document.body;
+export class NavbarComponent implements OnInit {
   sidebar = viewChild<ElementRef<HTMLElement>>('sidebar');
-  toggle = viewChild<ElementRef<HTMLElement>>('toggle');
-  searchBtn = viewChild<ElementRef<HTMLElement>>('search-box');
-  modeSwitch = viewChild<ElementRef<HTMLElement>>('toggle-switch');
-  modeText = viewChild<ElementRef<HTMLElement>>('mode-text');
+  modeText = viewChild<ElementRef<HTMLElement>>('modeText');
 
-  onToggle() {
+  ngOnInit(): void {
+    this.evaluateModeText()
+  }
+
+  onToggleMode() {
     document.body.classList.toggle('dark');
+    this.evaluateModeText();
+  }
+
+  onToggleSidebar() {
+    this.sidebar()?.nativeElement.classList.toggle('close');
+  }
+
+  private evaluateModeText() {
+    if (document.body.classList.contains('dark')) {
+      this.modeText()!.nativeElement.innerText = "Light mode";
+    } else {
+      this.modeText()!.nativeElement.innerText = "Dark mode";
+    }
   }
 }

@@ -6,6 +6,15 @@
   width: 250px;
   padding: 10px 14px;
   background: var(--color-sidebar);
+  transition: var(--tran-05);
+}
+
+.sidebar.close {
+  width: 88px;
+}
+
+.sidebar.close .image-container img {
+  width: 48px;
 }
 
 .sidebar li {
@@ -30,8 +39,8 @@
   transition: var(--tran-02);
 }
 
-.sidebar .image-text img {
-  width: 40px;
+.sidebar .image-container img {
+  width: 100px;
   border-radius: 6px;
 }
 
@@ -39,38 +48,41 @@
   min-width: 60px;
   display: flex;
   align-items: center;
+  color: var(--color-text);
 }
 
 .sidebar .text {
   font-size: 16px;
   font-weight: 500;
+  transition: var(--tran-03);
+  white-space: nowrap;
+  opacity: 1;
+}
+
+.sidebar.close .text {
+  opacity: 0;
 }
 
 .sidebar header {
   position: relative;
 
-
 }
 
-.sidebar header .image-text {
+.sidebar header .image-container {
   display: flex;
   align-items: center;
 }
 
-header .image-text .header-text {
+header .image-container {
   display: flex;
   flex-direction: column;
-}
-
-.header-text .name {
-  font-weight: 600;
 }
 
 .sidebar header .toggle {
   position: absolute;
   top: 50%;
   right: -25px;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(180deg);
   height: 25px;
   width: 25px;
   background: var(--color-primary);
@@ -80,6 +92,16 @@ header .image-text .header-text {
   border-radius: 25%;
   color: var(--color-sidebar);
   font-size: 22px;
+  transition: var(--tran-03);
+}
+
+.sidebar.close header .toggle {
+  transform: translateY(-50%);
+
+}
+
+body.dark .sidebar header .toggle {
+  color: var(--color-text);
 }
 
 .sidebar .search-box {
@@ -93,6 +115,11 @@ header .image-text .header-text {
   outline: none;
   border: none;
   background: var(--color-secondary);
+  border-radius: 6px;
+}
+
+::placeholder {
+  color: var(--color-text);
 }
 
 .sidebar li a {
@@ -109,16 +136,25 @@ header .image-text .header-text {
   background: var(--color-primary);
 }
 
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+  color: var(--color-text)
+}
+
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text {
   color: var(--color-sidebar)
 }
 
 .sidebar .menu-bar {
-  height: calc(100% - 50px);
+  height: calc(100% - 80px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.sidebar.close .menu-bar {
+    height: calc(100% - 50px);
 }
 
 .menu-bar .mode .moon-sun {
@@ -128,21 +164,40 @@ header .image-text .header-text {
   align-items: center;
 }
 
+.menu-bar .mode {
+  position: relative;
+  border-radius: 6px;
+  background: var(--color-sidebar-light);
+}
+
 .menu-bar .mode i {
   position: absolute;
+  transition: var(--tran-03);
 }
 
 .menu-bar .mode i.sun {
   opacity: 0;
 }
 
+body.dark .mode i.sun {
+  opacity: 1;
+}
+
+body.dark .mode i.moon {
+  opacity: 0;
+}
+
 .menu-bar .mode .toggle-switch {
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   min-width: 60px;
   cursor: pointer;
+  border-radius: 6px;
+  background: var(--color-sidebar-light);
 }
 
 .toggle-switch .switch {
@@ -167,6 +222,6 @@ header .image-text .header-text {
 }
 
 body.dark .switch::before {
-  left: 25px;
+  left: 24px;
 }
 

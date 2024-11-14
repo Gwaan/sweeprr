@@ -9,43 +9,44 @@
 }
 
 html {
-  background: var(--color-background);
   color: var(--color-text);
   font-family: "Inter";
 }
 
 body {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
   height: 100vh;
+  background-color: var(--color-background);
+}
+
+body.dark {
+  --color-background: #0e0303;
+  --color-text: #f9e0e3;
+  --color-primary: #ea9498;
+  --color-primary-light: #ea9498;
+  --color-secondary: #1a8460;
+  --color-accent: #357dd7;
+  --color-sidebar: #0b0f12;
+  --color-sidebar-light: #3d4752;
 }
 
 :root {
-  --color-background: #ebf2f4;
-  --color-text: #101b1e;
-  --color-primary: #2b4d54;
-  --color-secondary: #b28dc4;
-  --color-accent: #914b86;
-  --color-sidebar: #242c44;
+  --color-background: #fcf2f2;
+  --color-text: #1e0609;
+  --color-primary: #6a1519;
+  --color-primary-light: #9b4a4f;
+  --color-secondary: #7be5c2;
+  --color-accent: #2870c8;
+  --color-sidebar: #f8e6e6;
+  --color-sidebar-light: #fdf2f2;
 
-  /* -- Transition -- */
+  /* -- Transitions -- */
   --tran-02: all 0.2s ease;
   --tran-03: all 0.3s ease;
   --tran-04: all 0.4s ease;
   --tran-05: all 0.5s ease;
-
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #0b1214;
-    --color-text: #e1ecef;
-    --color-primary: #abcdd4;
-    --color-secondary: #603b72;
-    --color-accent: #b46eaa;
-  }
-}
+
 
 
 
