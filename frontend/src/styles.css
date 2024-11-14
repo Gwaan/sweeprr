@@ -19,25 +19,26 @@ body {
 }
 
 body.dark {
-  --color-background: #0e0303;
-  --color-text: #f9e0e3;
-  --color-primary: #ea9498;
-  --color-primary-light: #ea9498;
-  --color-secondary: #1a8460;
-  --color-accent: #357dd7;
-  --color-sidebar: #0b0f12;
-  --color-sidebar-light: #3d4752;
+  --color-background: #1b2a2a; /* Gris foncé tirant sur le teal, donnant une sensation de profondeur et de modernité */
+  --color-text: #f0f4f5; /* Teinte claire de gris, douce sur les yeux */
+  --color-primary: #40b7b0; /* Teal, vibrant et rafraîchissant, pour les éléments principaux comme le logo */
+  --color-primary-light: #6cd4d2; /* Version plus claire du teal pour les hover ou les éléments secondaires */
+  --color-secondary: #9c7a5a; /* Marron chaud ou beige sable pour un contraste subtil et chaleureux avec le teal */
+  --color-accent: #ff6f61; /* Corail doux pour un accent vibrant qui contraste bien avec le teal */
+  --color-sidebar: #263e3e; /* Gris foncé avec une touche de teal pour une sidebar discrète mais moderne */
+  --color-sidebar-light: #4a5b5a; /* Version plus claire et apaisante du teal pour la sidebar en mode clair */
 }
 
+/* Light Theme */
 :root {
-  --color-background: #fcf2f2;
-  --color-text: #1e0609;
-  --color-primary: #6a1519;
-  --color-primary-light: #9b4a4f;
-  --color-secondary: #7be5c2;
-  --color-accent: #2870c8;
-  --color-sidebar: #f8e6e6;
-  --color-sidebar-light: #fdf2f2;
+  --color-background: #f4f9f9; /* Gris très clair tirant sur le bleu, pour un fond frais et lumineux */
+  --color-text: #1f3b3a; /* Gris foncé tirant sur le vert, idéal pour un texte lisible et bien contrasté */
+  --color-primary: #40b7b0; /* Teal, la couleur principale du logo, bien visible et rafraîchissante */
+  --color-primary-light: #6cd4d2; /* Teal plus clair, pour des éléments secondaires comme les boutons survolés */
+  --color-secondary: #db9a67; /* Beige clair, couleur chaude et terreuse pour adoucir l'ensemble */
+  --color-accent: #ff6f61; /* Corail doux, créant un contraste chaud et énergique avec le teal */
+  --color-sidebar: #e2f2f2; /* Gris clair teinté de bleu-vert pour une sidebar lumineuse et apaisante */
+  --color-sidebar-light: #a8d0d0;
 
   /* -- Transitions -- */
   --tran-02: all 0.2s ease;

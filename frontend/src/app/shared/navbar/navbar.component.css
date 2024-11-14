@@ -133,9 +133,11 @@ body.dark .sidebar header .toggle {
   transition: var(--tran-04);
 }
 
-.sidebar li a:hover {
-  background: var(--color-primary);
+.sidebar li a:hover,
+.sidebar li a[aria-current="page"] {
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
 }
+
 
 body.dark .sidebar li a:hover .icon,
 body.dark .sidebar li a:hover .text {
@@ -168,7 +170,7 @@ body.dark .sidebar li a:hover .text {
 .menu-bar .mode {
   position: relative;
   border-radius: 6px;
-  background: var(--color-sidebar-light);
+  background: var(--color-primary-light);
 }
 
 .menu-bar .mode i {
@@ -198,7 +200,7 @@ body.dark .mode i.moon {
   min-width: 60px;
   cursor: pointer;
   border-radius: 6px;
-  background: var(--color-sidebar-light);
+  background: var(--color-primary-light);
 }
 
 .toggle-switch .switch {
