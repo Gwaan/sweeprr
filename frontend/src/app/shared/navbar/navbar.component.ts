@@ -60,7 +60,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isActive(activeRoute: string[]): boolean {
-    console.log(activeRoute);
     return activeRoute.join('/') === this.router.url;
   }
 }
