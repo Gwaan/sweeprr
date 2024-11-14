@@ -84,6 +84,7 @@ header .image-text .header-text {
 
 .sidebar .search-box {
   background: var(--color-secondary);
+  border-radius: 6px;
 }
 
 .search-box input {
@@ -91,7 +92,6 @@ header .image-text .header-text {
   width: 100%;
   outline: none;
   border: none;
-  border-radius: 6px;
   background: var(--color-secondary);
 }
 
