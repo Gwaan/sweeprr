@@ -7,6 +7,7 @@
   padding: 10px 14px;
   background: var(--color-sidebar);
   transition: var(--tran-05);
+  z-index: 1000;
 }
 
 .sidebar.close {
@@ -154,7 +155,7 @@ body.dark .sidebar li a:hover .text {
 }
 
 .sidebar.close .menu-bar {
-    height: calc(100% - 50px);
+  height: calc(100% - 50px);
 }
 
 .menu-bar .mode .moon-sun {
@@ -225,3 +226,22 @@ body.dark .switch::before {
   left: 24px;
 }
 
+.overlay {
+  display: flex;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .sidebar:not(.close) ~ .overlay {
+    display: block;
+    opacity: 1;
+    transition: var(--tran-05);
+  }
+}
