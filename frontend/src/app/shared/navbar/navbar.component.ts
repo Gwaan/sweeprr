@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   menuLinks: MenuLinkDescriptor[] = [
     {
       route: ['/'],
-      iconClass: 'bx bx-home icon',
+      iconClass: 'bx bx-home',
       label: 'Dashboard'
     }, {
       route: ['/test'],

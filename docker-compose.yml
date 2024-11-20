@@ -1,9 +1,18 @@
 services:
   backend:
+    container_name: backend
     build:
       context: ./backend
       dockerfile: Dockerfile
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT}
+    ports:
+      - "${BACKEND_PORT}:3000"
+    volumes:
+      - C:/:/host:ro
+      - /var/run/docker.sock.raw:/var/run/docker.sock
   frontend:
+    container_name: frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
