@@ -1,25 +1,25 @@
+# Étape de base
 FROM node:22.11-alpine AS base
 
+# Étape des dépendances
 FROM base AS dependencies
-
 WORKDIR /app
+COPY package.json yarn.lock tsconfig.json ./
+RUN yarn install --frozen-lockfile
 
-COPY package.json package-lock.json ./
-RUN npm ci
+# Copie uniquement les fichiers nécessaires pour le build
+COPY . .
+RUN yarn build
 
-FROM base AS build
-
+# Étape de production
+FROM base AS production
 WORKDIR /app
-
-COPY . ./
-
+COPY --from=dependencies /app/dist ./dist
 COPY --from=dependencies /app/node_modules ./node_modules
-RUN npm run build
+COPY package.json ./
 
-FROM base AS deploy
+# Exposition du port
+EXPOSE 3000
 
-WORKDIR /app
-COPY --from=build /app/dist/ ./dist/
-COPY --from=build /app/node_modules ./node_modules
-
-CMD [ "node", "dist/main.js" ]
+# Commande pour démarrer l'application
+CMD ["node", "dist/index.js"]
