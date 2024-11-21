@@ -2,14 +2,25 @@
   "compilerOptions": {
     "rootDir": "./src",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noStrictGenericChecks": false
   },
-  "include": ["src", "tests"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src",
+    "tests"
+  ]
 }
