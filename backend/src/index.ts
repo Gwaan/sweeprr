@@ -8,6 +8,13 @@ async function init() {
   const fastify = Fastify({
     logger: {
       level: process.env.LOG_LEVEL,
+      transport: {
+        target: 'pino-pretty',
+        options: {
+          translateTime: 'SYS:standard',
+          ignore: 'pid,hostname',
+        },
+      },
     },
   });
   await server(fastify);

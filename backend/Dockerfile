@@ -6,15 +6,12 @@ FROM base AS dependencies
 
 WORKDIR /app
 
-COPY package.json yarn.lock tsconfig.json ./
-
-RUN yarn add ts-node tsconfig-paths -D
+COPY package.json yarn.lock./
 
 RUN yarn install --frozen-lockfile
 
 COPY . ./
 
-# Étape de production
 FROM base AS production
 
 WORKDIR /app
@@ -25,4 +22,4 @@ RUN yarn build
 
 EXPOSE 3000
 
-CMD ["yarn", "ts-node", "-r", "tsconfig-paths/register", "src/index.ts"]
+CMD ["yarn", "start"]

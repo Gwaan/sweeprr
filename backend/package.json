@@ -1,11 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.ts",
-    "build": "npx tsc -p tsconfig.json",
+    "build": "rm -rf ./dist && tsc --project tsconfig.build.json && resolve-tspaths -p tsconfig.build.json -s ./src -o ./dist",
+    "start": "node dist/index.js",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "format": "prettier . --write"
@@ -25,7 +26,9 @@
     "eslint-plugin-n": "^17.13.2",
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-unicorn": "^56.0.1",
+    "pino-pretty": "^13.0.0",
     "prettier": "^3.3.3",
+    "resolve-tspaths": "^0.8.22",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.14.0"
   },
