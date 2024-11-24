@@ -7,7 +7,6 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-
 export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.strict,
@@ -27,12 +26,7 @@ export default tseslint.config(
   },
   {
     name: 'Global Ignores',
-    ignores: [
-      '/.cache',
-      '/.git',
-      '/.yarn',
-      'eslint.config.mjs',
-    ],
+    ignores: ['/.cache', '/.git', '/.yarn', 'eslint.config.mjs'],
   },
   {
     files: ['**/*.ts'],

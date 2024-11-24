@@ -21,7 +21,7 @@ async function init() {
 
   try {
     await fastify.listen({
-      port: parseInt(process.env.BACKEND_PORT!),
+      port: Number.parseInt(process.env.BACKEND_PORT!),
       host: process.env.HOST,
     });
   } catch (error) {
