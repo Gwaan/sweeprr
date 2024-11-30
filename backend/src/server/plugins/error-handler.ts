@@ -1,7 +1,8 @@
 import { ApiErrorResponse, apiErrorResponseSchema } from '@/shared/api/api-error.response';
-import { ExceptionBase } from '@/shared/exceptions/exception-base';
+import { getRequestId } from '@/shared/app/app-request-context';
 import { FastifyError, FastifyErrorCodes, FastifyInstance } from 'fastify';
 import fp from 'fastify-plugin';
+import { ExceptionBase } from '@/shared/exceptions/exception-base';
 
 const fastifyErrorCodesMap = {
   FST_ERR_VALIDATION: (error: FastifyError) => ({
@@ -30,20 +31,34 @@ async function errorHandlerPlugin(fastify: FastifyInstance) {
 
     if (fastifyError) {
       const response = fastifyError(error);
+      response.correlationId = getRequestId();
       return res.status(response.statusCode).send(response);
     }
+
+    // Catch all other errors
     fastify.log.error(error);
     if (error instanceof ExceptionBase) {
       return res.status(error.statusCode).send({
         statusCode: error.statusCode,
         message: error.message,
         error: error.error,
+        correlationId: getRequestId(),
       } satisfies ApiErrorResponse);
     }
+
+    return res.status(500).send({
+      statusCode: 500,
+      message: 'Internal Server Error', // https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1
+      error: 'Internal Server Error',
+      correlationId: getRequestId(),
+    } satisfies ApiErrorResponse);
   });
+
+  // Add the ExceptionResponse schema to the fastify instance
   fastify.addSchema(apiErrorResponseSchema);
 }
 
+// Export the plugin
 export default fp(errorHandlerPlugin, {
   name: 'errorHandler',
 });

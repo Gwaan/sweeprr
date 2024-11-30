@@ -1,4 +1,5 @@
-/*import si, { Systeminformation } from 'systeminformation';
+/*
+import si, { Systeminformation } from 'systeminformation';
 
 import DockerContainerStatsData = Systeminformation.DockerContainerStatsData;
 import FsSizeData = Systeminformation.FsSizeData;
@@ -21,4 +22,5 @@ const systemService = () => {
   };
 };
 
-const formatBytesToGB = (bytes: number) => (bytes / 1024 ** 3).toFixed(2);*/
+const formatBytesToGB = (bytes: number) => (bytes / 1024 ** 3).toFixed(2);
+*/
