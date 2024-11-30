@@ -1,8 +1,8 @@
-import { systemInfoActionCreator } from '@/modules/system';
+import { systemActionCreator } from '@/modules/system';
 import { HddSpaceModel } from '@/modules/system/queries/get-system-infos/get-system-info.schema';
 
 export type GetSystemInfoQueryResult = Promise<HddSpaceModel>;
-export const getSystemInfoQuery = systemInfoActionCreator('info', { websocket: true });
+export const getSystemInfoQuery = systemActionCreator('info', { websocket: true });
 
 export default function makeGetSystemInfo({ queryBus }: Dependencies) {
   return {
