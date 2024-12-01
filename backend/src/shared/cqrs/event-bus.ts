@@ -1,4 +1,9 @@
-import { Action, EventBus, EventHandler, Middleware } from '@/shared/cqrs/bus.types';
+import {
+  Action,
+  EventBus,
+  EventHandler,
+  Middleware,
+} from '@/shared/cqrs/bus.types';
 import { pipe } from 'ramda';
 
 export function eventBus(): EventBus {

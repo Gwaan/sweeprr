@@ -1,6 +1,7 @@
 import server from '@/server';
 import * as dotenv from 'dotenv';
 import Fastify from 'fastify';
+import { randomUUID } from 'node:crypto';
 
 dotenv.config();
 
@@ -16,8 +17,13 @@ async function init() {
         },
       },
     },
+    genReqId: function (req) {
+      // header best practice: don't use "x-" https://www.rfc-editor.org/info/rfc6648 and keep it lowercase
+      return (req.headers['request-id'] as string) ?? randomUUID();
+    },
   });
   await server(fastify);
+  console.log(fastify.printPlugins());
   try {
     await fastify.listen({
       port: Number.parseInt(process.env.BACKEND_PORT!),

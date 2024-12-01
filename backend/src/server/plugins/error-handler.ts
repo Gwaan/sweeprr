@@ -1,8 +1,11 @@
-import { ApiErrorResponse, apiErrorResponseSchema } from '@/shared/api/api-error.response';
+import {
+  ApiErrorResponse,
+  apiErrorResponseSchema,
+} from '@/shared/api/api-error.response';
 import { getRequestId } from '@/shared/app/app-request-context';
+import { ExceptionBase } from '@/shared/exceptions/exception-base';
 import { FastifyError, FastifyErrorCodes, FastifyInstance } from 'fastify';
 import fp from 'fastify-plugin';
-import { ExceptionBase } from '@/shared/exceptions/exception-base';
 
 const fastifyErrorCodesMap = {
   FST_ERR_VALIDATION: (error: FastifyError) => ({

@@ -9,8 +9,7 @@ services:
     ports:
       - "${BACKEND_PORT}:3000"
     volumes:
-      - C:/:/host:ro
-      - /var/run/docker.sock.raw:/var/run/docker.sock
+      - ./config:/config
   frontend:
     container_name: frontend
     build:

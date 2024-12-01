@@ -11,8 +11,7 @@ import {
 declare global {
   // Declare global DI container type
   // type Dependencies = InfrastructureDependencies;
-  interface Dependencies extends InfrastructureDependencies {
-  }
+  interface Dependencies extends InfrastructureDependencies {}
 
   // Ensures HTTP request is strongly typed from the schema
   type FastifyRouteInstance = FastifyInstance<
@@ -26,11 +25,9 @@ declare global {
 
 // Strongly Type DI container
 declare module '@fastify/awilix' {
-  interface Cradle extends Dependencies {
-  }
+  interface Cradle extends Dependencies {}
 
-  interface RequestCradle extends Dependencies {
-  }
+  interface RequestCradle extends Dependencies {}
 }
 
 declare module '@fastify/request-context' {

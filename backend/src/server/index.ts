@@ -1,12 +1,13 @@
 import { di } from '@/server/di';
 import AutoLoad from '@fastify/autoload';
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
+import fastifyWebsocket from '@fastify/websocket';
 import { FastifyInstance } from 'fastify';
 import path from 'node:path';
-import fastifyWebsocket from '@fastify/websocket';
 
 export default async function createServer(fastify: FastifyInstance) {
   fastify.register(fastifyWebsocket);
+
   // Auto-load plugins
   await fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),

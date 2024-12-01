@@ -1,6 +1,9 @@
+import { getRequestId } from '@/shared/app/app-request-context';
+
 export interface SerializedException {
   message: string;
   error: string;
+  correlationId: string;
   statusCode?: number;
   stack?: string;
   cause?: string;
@@ -10,6 +13,8 @@ export interface SerializedException {
 export abstract class ExceptionBase extends Error {
   abstract error: string;
   abstract statusCode: number;
+
+  public readonly correlationId: string;
 
   /**
    * @param {string} message
@@ -27,6 +32,7 @@ export abstract class ExceptionBase extends Error {
   ) {
     super(message);
     Error.captureStackTrace(this, this.constructor);
+    this.correlationId = getRequestId();
   }
 
   /**
@@ -42,6 +48,7 @@ export abstract class ExceptionBase extends Error {
       error: this.error,
       statusCode: this.statusCode,
       stack: this.stack,
+      correlationId: this.correlationId,
       cause: JSON.stringify(this.cause),
       metadata: this.metadata,
     };

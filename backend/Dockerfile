@@ -22,4 +22,5 @@ RUN yarn build
 
 EXPOSE 3000
 
+VOLUME /root
 CMD ["yarn", "start"]

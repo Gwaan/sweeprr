@@ -7,16 +7,22 @@ import { FastifyInstance } from 'fastify';
 export default async function getSystemInfo(fastify: FastifyInstance) {
   fastify.get('/v1/system-info', { websocket: true }, async (socket, _) => {
     const intervalFn = async () => {
-      const result = await fastify.queryBus.execute<GetSystemInfoQueryResult>(
-        getSystemInfoQuery(),
-      );
-      socket.send(JSON.stringify(result));
+      try {
+        const result =
+          await fastify.queryBus.execute<GetSystemInfoQueryResult>(
+            getSystemInfoQuery(),
+          );
+        socket.send(JSON.stringify(result));
+      } catch (error) {
+        fastify.log.error(error);
+        clearInterval(interval);
+        socket.close();
+      }
     };
-
-    const interval = setInterval(intervalFn, 500);
-
+    const interval = setInterval(intervalFn, 2000);
     socket.on('close', () => {
       clearInterval(interval);
+      socket.close();
     });
   });
 }

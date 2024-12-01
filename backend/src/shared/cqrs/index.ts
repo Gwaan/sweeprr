@@ -1,13 +1,13 @@
 import { CommandBus, EventBus } from '@/shared/cqrs/bus.types';
 import { commandBus } from '@/shared/cqrs/command-bus';
-
-
-import fastifyPlugin from 'fastify-plugin';
 import { eventBus } from '@/shared/cqrs/event-bus';
-import { decorateWithMetadata, makeTrackExecutionTime } from '@/shared/cqrs/middlewares';
+import {
+  decorateWithMetadata,
+  makeTrackExecutionTime,
+} from '@/shared/cqrs/middlewares';
+import fastifyPlugin from 'fastify-plugin';
 
-interface CQRSPluginOption {
-}
+interface CQRSPluginOption {}
 
 const CQRSPlugin = fastifyPlugin<CQRSPluginOption>(
   (fastify, _opts, done) => {

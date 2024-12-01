@@ -1,6 +1,6 @@
+import { getRequestId } from '@/shared/app/app-request-context';
 import { Action, CommandHandler, EventHandler } from '@/shared/cqrs/bus.types';
 import { FastifyBaseLogger } from 'fastify';
-import { getRequestId } from '@/shared/app/app-request-context';
 
 export function decorateWithMetadata(
   action: Action<unknown>,
